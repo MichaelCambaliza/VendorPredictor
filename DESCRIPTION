@@ -1,3 +1,4 @@
+Package: Vendor.Prediction.deploy
 Depends:
     shiny,
     data.table,
