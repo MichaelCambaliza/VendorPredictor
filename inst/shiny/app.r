@@ -51,7 +51,7 @@ ui = fluidPage(theme = shinytheme("superhero"),
                     mainPanel(
                         tags$style(type='text/css', ".selectize-input { font-size: 28px; line-height: 28px;} .selectize-dropdown { font-size: 28px; line-height: 28px; }"),
                         verbatimTextOutput('contents'),
-                        div(dataTableOutput('tabledata'), style = "font-size:28px"),
+                        div(DT::dataTableOutput('tabledata'), style = "font-size:28px"),
                         width = 12
                     )
                     
@@ -98,7 +98,7 @@ server = function(input, output, session) {
 
     
     # Prediction results table
-    output$tabledata = renderDataTable({
+    output$tabledata = DT::renderDataTable({
         if (input$submitbutton>0) { 
             datatable(datasetInput(),rownames = FALSE, filter="none", selection="none", escape=FALSE,
                       options = list(headerCallback = DT::JS(
