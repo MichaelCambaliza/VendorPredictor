@@ -18,3 +18,7 @@ Depends:
     dplyr,
     shinythemes,
     DT
+    Suggests:
+    dsassembly
+DeploySubPath: iSEE-dataset
+RoxygenNote: 7.1.1
