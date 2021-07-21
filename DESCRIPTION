@@ -1,10 +1,13 @@
-Package: VendorPredictor.deploy
-Title: Deploying VendorPredictor to View Probability Results
-Description: 
-    Implements a deployable instance of an VendorPredictor application to explore 
-    possible vendors that can satisfy users
-Version: 0.0.3
-Date: 2020-10-09
+Package: shinypkgtemplate
+Type: Package
+Title: ShinyApp package example/template
+Version: 0.0.2
+Date: 2017-08-10
+Author: Dinakar Kulkarni <kulkarni.dinakar@gene.com>
+Maintainer: Dinakar Kulkarni <kulkarni.dinakar@gene.com>
+Description: This is a simple template that shows how a package should be structured
+    for a successful deployment on the gRED Shiny Servers
+License: GNE
 Depends:
     shiny,
     data.table,
@@ -17,8 +20,4 @@ Depends:
     reshape2,
     dplyr,
     shinythemes,
-    DT
-    Suggests:
-    dsassembly
-DeploySubPath: iSEE-dataset
-RoxygenNote: 7.1.1
+    DTSwitchrLibrary: ExampleApp
