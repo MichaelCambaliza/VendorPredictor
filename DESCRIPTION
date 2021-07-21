@@ -11,4 +11,3 @@ Depends:
     dplyr,
     shinythemes,
     DT
-DeploySubPath = Vendor-Predictor
