@@ -1,3 +1,24 @@
+library(shiny)
+library(data.table)
+library(readxl)
+library(tidyverse)
+library(caret)
+library(e1071)
+library(rsample)
+library(gbm)
+library(reshape2)
+library(dplyr)
+library(shinythemes)
+library(DT)
+
+model = readRDS("model.rds")
+data = readRDS("Final.rds")
+vendor_data = readRDS("vendor.rds")
+Area1 = readRDS("Area1.rds")
+Molecule1 = readRDS("Molecule1.rds")
+Technology1 = readRDS("Technology1.rds")
+Indication1 = readRDS("Indication1.rds")
+
 ui = fluidPage(theme = shinytheme("superhero"),
                 pageWithSidebar(
                     
