@@ -9,4 +9,5 @@ Depends:
     gbm,
     reshape2,
     dplyr,
-    shinythemes
+    shinythemes   
+DeploySubPath = Vendor-Predictor
