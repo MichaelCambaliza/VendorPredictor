@@ -19,5 +19,5 @@ Depends:
     gbm,
     reshape2,
     dplyr,
-    shinythemes,
-    DTSwitchrLibrary: ExampleApp
+    shinythemes
+DTSwitchrLibrary: ExampleApp
