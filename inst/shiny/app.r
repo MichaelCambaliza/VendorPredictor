@@ -11,7 +11,7 @@ library(dplyr)
 library(shinythemes)
 library(DT)
 
-model <- readRDS("model.rds")
+model = readRDS("model.rds")
 data = readRDS("Final.rds")
 vendor_data = readRDS("vendor.rds")
 Area1 = readRDS("Area1.rds")
@@ -20,7 +20,7 @@ Technology1 = readRDS("Technology1.rds")
 Indication1 = readRDS("Indication1.rds")
 
 
-ui <- fluidPage(theme = shinytheme("superhero"),
+ui = fluidPage(theme = shinytheme("superhero"),
                 pageWithSidebar(
                     
                     headerPanel('Vendor Predictor'),
@@ -64,11 +64,11 @@ ui <- fluidPage(theme = shinytheme("superhero"),
 )
 
 
-server<- function(input, output, session) {
+server = function(input, output, session) {
     
-    datasetInput <- reactive({  
+    datasetInput = reactive({  
         
-        df <- data.frame(
+        df = data.frame(
             Name = c("Area",
                      "Molecule",
                      "Indication",
@@ -78,32 +78,32 @@ server<- function(input, output, session) {
                                    input$Indication,
                                    input$Technology)),stringsAsFactors = TRUE)
         
-        Vendor <- ""
-        df <- rbind(df, Vendor)
-        input <- t(df)
+        Vendor = ""
+        df = rbind(df, Vendor)
+        input = t(df)
         write.table(input,"input.csv", sep=",", quote = FALSE, row.names = FALSE, col.names = FALSE)
-        test <- read.csv(paste("input", ".csv", sep=""), header = TRUE)
-        Output <- round(predict(model,test,type="prob"),3)
+        test = read.csv(paste("input", ".csv", sep=""), header = TRUE)
+        Output = round(predict(model,test,type="prob"),3)
         probs = reshape2::melt(Output,id.vars = NULL)
         colnames(probs) = c("Vendor", "Probability")
         rownames(probs) = NULL
         data3 = data[,c("Vendor","Status")]
         data4 = distinct(data3)
         probs = merge(x = probs, y = data4[,c("Vendor","Status")], by = "Vendor")
-        probs <- merge(probs, vendor_data, all = TRUE)
-        probs[is.na(probs)] <- "NA"
+        probs = merge(probs, vendor_data, all = TRUE)
+        probs[is.na(probs)] = "NA"
         probs = probs[1:152,]
-        probs <- probs[order(probs$Probability, decreasing = TRUE), ]
-        probs$Probability[probs$Probability >= .25] <- "High"
-        probs$Probability[probs$Probability < .1] <- "Low"
-        probs$Probability[probs$Probability >= .1 & probs$Probability < .25] <- "Medium"
+        probs = probs[order(probs$Probability, decreasing = TRUE), ]
+        probs$Probability[probs$Probability >= .25] = "High"
+        probs$Probability[probs$Probability < .1] = "Low"
+        probs$Probability[probs$Probability >= .1 & probs$Probability < .25] = "Medium"
         print(probs[1:4,], row.names = FALSE)
         
     })
 
     
     # Prediction results table
-    output$tabledata <- renderDataTable({
+    output$tabledata = renderDataTable({
         if (input$submitbutton>0) { 
             datatable(datasetInput(),rownames = FALSE, filter="none", selection="none", escape=FALSE,
                       options = list(headerCallback = DT::JS(
