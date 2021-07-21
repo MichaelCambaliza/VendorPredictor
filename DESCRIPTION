@@ -1,0 +1,24 @@
+Package: VendorPredictor.deploy
+Title: Deploying VendorPredictor to View Probability Results
+Description: 
+    Implements a deployable instance of an VendorPredictor application to explore 
+    possible vendors that can satisfy users
+Version: 0.0.3
+Date: 2020-10-09
+Depends:
+    shiny,
+    data.table,
+    readxl,
+    tidyverse,
+    caret,
+    e1071,
+    rsample,
+    gbm,
+    reshape2,
+    dplyr,
+    shinythemes,
+    DT
+Suggests:
+    dsassembly
+DeploySubPath: iSEE-dataset
+RoxygenNote: 7.1.1
