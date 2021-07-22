@@ -1,4 +1,3 @@
-library(shiny)
 library(tidyverse)
 library(caret)
 library(gbm)
@@ -6,6 +5,7 @@ library(reshape2)
 library(dplyr)
 library(shinythemes)
 library(DT)
+library(shiny)
 
 model = readRDS("model.rds")
 data = readRDS("Final.rds")
