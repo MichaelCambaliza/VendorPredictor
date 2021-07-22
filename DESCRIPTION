@@ -10,4 +10,7 @@ Depends:
     dplyr,
     shinythemes,
     DT
+Suggests:
+    dsassembly
+DeploySubPath: VendorPredictor-dataset
 RoxygenNote: 7.1.1
