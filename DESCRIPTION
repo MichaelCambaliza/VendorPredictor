@@ -2,14 +2,14 @@ Package: VendorPredictor
 Version: 0.0.3
 Date: 2021-7-21
 Depends:
-    shiny,
     tidyverse,
     caret,
     gbm,
     reshape2,
     dplyr,
     shinythemes,
-    DT
+    DT,
+    shiny
 Suggests:
     dsassembly
 DeploySubPath: VendorPredictor-dataset
