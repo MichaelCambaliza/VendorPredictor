@@ -10,3 +10,4 @@ Depends:
     dplyr,
     shinythemes,
     DT
+RoxygenNote: 7.1.1
