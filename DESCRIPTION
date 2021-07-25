@@ -7,10 +7,9 @@ Depends:
     gbm,
     reshape2,
     dplyr,
-    shinythemes,
-    DT,
-    shiny
-Suggests:
-    dsassembly
+    shinythemes
+imports:
+    shiny,
+    DT
 DeploySubPath: VendorPredictor-dataset
 RoxygenNote: 7.1.1
