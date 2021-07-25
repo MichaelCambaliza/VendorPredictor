@@ -15,42 +15,42 @@ Molecule1 = readRDS("Molecule1.rds")
 Technology1 = readRDS("Technology1.rds")
 Indication1 = readRDS("Indication1.rds")
 
-ui = fluidPage(theme = shinytheme("superhero"),
-                pageWithSidebar(
+ui =shiny::fluidPage(theme = shinytheme("superhero"),
+                shiny::pageWithSidebar(
                     
-                    headerPanel('Vendor Predictor'),
+                    shiny::headerPanel('Vendor Predictor'),
                     
-                    sidebarPanel(
+                    shiny::sidebarPanel(
                         tags$label(h3('Input parameters')),
                         tags$style(type='text/css', ".selectize-input { font-size: 32px; line-height: 32px;} .selectize-dropdown { font-size: 28px; line-height: 28px; }"),
                         div(style = "font-size:20px;",
-                            selectInput(inputId = "Area", label = div(style = "font-size:28px", "Select the Area"), 
+                            shiny::selectInput(inputId = "Area", label = div(style = "font-size:28px", "Select the Area"), 
                                         choices = Area1, selectize = TRUE
                             )
                         ),
                         div(style = "font-size:20px;",
-                            selectInput(inputId = "Molecule", label = div(style = "font-size:28px", "Select the Molecule"), 
+                            shiny::selectInput(inputId = "Molecule", label = div(style = "font-size:28px", "Select the Molecule"), 
                                         choices = Molecule1, selectize = TRUE
                             )
                         ),
                         div(style = "font-size:20px;",
-                            selectInput(inputId = "Technology", label = div(style = "font-size:28px", "Select the Technology"), 
+                            shiny::selectInput(inputId = "Technology", label = div(style = "font-size:28px", "Select the Technology"), 
                                         choices = Technology1, selectize = TRUE
                             )
                         ),
                         div(style = "font-size:20px;",
-                            selectInput(inputId = "Indication", label = div(style = "font-size:28px", "Select the Indication"), 
+                            shiny::selectInput(inputId = "Indication", label = div(style = "font-size:28px", "Select the Indication"), 
                                         choices = Indication1, selectize = TRUE
                             )
                         ),
-                        actionButton("submitbutton", "Submit", 
+                        shiny::actionButton("submitbutton", "Submit", 
                                      class = "btn btn-primary",style='padding:5px; font-size:18px'),
                         width = 6
                     ),
                     
-                    mainPanel(
+                    shiny::mainPanel(
                         tags$style(type='text/css', ".selectize-input { font-size: 28px; line-height: 28px;} .selectize-dropdown { font-size: 28px; line-height: 28px; }"),
-                        verbatimTextOutput('contents'),
+                        shiny::verbatimTextOutput('contents'),
                         div(DT::dataTableOutput('tabledata'), style = "font-size:28px"),
                         width = 12
                     )
@@ -61,7 +61,7 @@ ui = fluidPage(theme = shinytheme("superhero"),
 
 server = function(input, output, session) {
     
-    datasetInput = reactive({  
+    datasetInput = shiny::reactive({  
         
         df = data.frame(
             Name = c("Area",
@@ -100,7 +100,7 @@ server = function(input, output, session) {
     # Prediction results table
     output$tabledata = DT::renderDataTable({
         if (input$submitbutton>0) { 
-            datatable(datasetInput(),rownames = FALSE, filter="none", selection="none", escape=FALSE,
+            DT::datatable(datasetInput(),rownames = FALSE, filter="none", selection="none", escape=FALSE,
                       options = list(headerCallback = DT::JS(
                           "function(thead) {",
                           "  $(thead).css('font-size', '3em');
@@ -116,4 +116,4 @@ server = function(input, output, session) {
     
 }
 
-shinyApp(ui = ui, server = server)
+shiny::shinyApp(ui = ui, server = server)
